@@ -23,20 +23,18 @@
 <br>
 <input id="j"><input id="trash">
 <br>
-<button type="button" onclick="myFunction(); complex();">Calculate!</button>
-<p>Raw Obscurity Score: </p><p id="demo"></p>
-<p>Obscurity Score: </p><p id="obs"></p>
-
+<button type="button" onclick="rawf(); nonrawf();">Calculate!</button>
+<p>Raw Obscurity Score: </p><p id="raw"></p>
+<p>Obscurity Score: </p><p id="nonraw"></p>
 <script>
-function myFunction() {
+function rawf() {
     var sum;
-    sum = (Math.log10(parseInt(fa()))+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj())))/10;
+    sum = f();
     sum = (sum*100-(sum*100)%1)/100;
-    document.getElementById("demo").innerHTML = sum;
+    document.getElementById("raw").innerHTML = sum;
 }
-function complex(){
-    var p;
-    p = (Math.log10(parseInt(fa()))+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj())))/10;
+function nonrawf(){
+    var p = f();
     var w = 6.63; //width
     var h = 1; //height
     var d = -0.15; //mode
@@ -46,139 +44,25 @@ function complex(){
     var z1 = (h*(d*Math.exp(1/d)*w*(-4*Math.exp(c-(p/(d*w)))+4*Math.exp(c)+Math.exp((w-2*p)/(d*w))-Math.exp(1/d))+(2-4*Math.exp(c))*p))/(2*(Math.exp(c)-1)*(Math.exp(c)-1))
     var z2 = -h*(d*w*(Math.exp(w/d/w)-Math.exp(0/d/w))*(Math.exp(w/d/w)+Math.exp(0/d/w)-4*Math.exp(c))+w*(4*Math.exp(c)-2)+0*(2-4*Math.exp(c)))/(2*(Math.exp(c)-1)*(Math.exp(c)-1))
     var z = ""+100*(1-z1/z2)-(1000*(1-z1/z2)%1)/10+"%";
-    document.getElementById("obs").innerHTML = z;
+    document.getElementById("nonraw").innerHTML = z;
 }
-</script>
-<script>
-function fa() {
+function f() {
     var x, text;
-    x = document.getElementById("a").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
+    var artists = ["a","b","c","d","e","f","g","h","i","j"];
+    var prod = 1;
+    for (i=0;i<artists.length;i++){
+        x = document.getElementById(artists[i]).value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+        xhr.setRequestHeader('Content-Type', 'text/xml');
+        xhr.send();
+        xmlDocument = xhr.responseXML;
+        text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+        prod = prod*text;
+    }
+    prod = Math.log10(prod)/10;
+    return prod;
 }
 </script>
-<script>
-function fb() {
-    var x, text;
-    x = document.getElementById("b").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function fc() {
-    var x, text;
-    x = document.getElementById("c").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function fd() {
-    var x, text;
-    x = document.getElementById("d").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function fe() {
-    var x, text;
-    x = document.getElementById("e").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function ff() {
-    var x, text;
-    x = document.getElementById("f").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function fg() {
-    var x, text;
-    x = document.getElementById("g").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function fh() {
-    var x, text;
-    x = document.getElementById("h").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function fi() {
-    var x, text;
-    x = document.getElementById("i").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-<script>
-function fj() {
-    var x, text;
-    x = document.getElementById("j").value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
-    xhr.setRequestHeader('Content-Type', 'text/xml');
-    xhr.send();
-    xmlDocument = xhr.responseXML;
-    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-    return text;
-}
-</script>
-
 </body>
 </html> 
