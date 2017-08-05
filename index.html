@@ -1,7 +1,34 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<p>Enter the artist names of your ten favorite albums</p>
+
+<form id="frm1" action="/action_page.php">
+  Artist from your first album: <input type="text" name="a"><br>
+  Artist from your second album: <input type="text" name="b"><br><br>
+  <input type="button" onclick="myFunction()" value="Submit">
+</form>
+var artists = [a,b]
+var sum = 0
+<script>
+function main(){
+for (var i = 0; i<artists.length; i++){
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist=" + artists[i] + "&autocorrect=1", false);
+  xhr.setRequestHeader('Content-Type', 'text/xml');
+  xhr.send();
+  xmlDocument = xhr.responseXML;
+  if (sum === 0){
+    sum += xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+  }
+  else {
+    sum *= xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+  }
+}
+return sum
+}
+</script>
+
 </body>
 </html>
