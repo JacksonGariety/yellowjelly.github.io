@@ -76,6 +76,7 @@ function f() {
     var prod = 1;
     for (i=0;i<artists.length;i++){
         x = document.getElementById(artists[i]).value;
+        x = x.trim();
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
         xhr.setRequestHeader('Content-Type', 'text/xml');
