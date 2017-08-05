@@ -6,26 +6,26 @@
 
 <p>Artist - Album</p>
 
-<input id="a"><!-- <input id="basura"> -->
+<input id="a"><input id="trash">
 <br>
-<!-- <input id="b"><input id="basura">
+<input id="b"><input id="trash">
 <br>
-<input id="c"><input id="basura">
+<input id="c"><input id="trash">
 <br>
-<input id="d"><input id="basura">
+<input id="d"><input id="trash">
 <br>
-<input id="e"><input id="basura">
+<input id="e"><input id="trash">
 <br>
-<input id="f"><input id="basura">
+<input id="f"><input id="trash">
 <br>
-<input id="g"><input id="basura">
+<input id="g"><input id="trash">
 <br>
-<input id="h"><input id="basura">
+<input id="h"><input id="trash">
 <br>
-<input id="i"><input id="basura">
+<input id="i"><input id="trash">
 <br>
-<input id="j"><input id="basura">
-<br> -->
+<input id="j"><input id="trash">
+<br>
 <button type="button" onclick="myFunction()">Raw Score</button>
 <button type="button" onclick="complex()">Score</button>
 <p>Raw Score: </p><p id="demo"></p>
@@ -33,22 +33,20 @@
 <script>
 function myFunction() {
     var sum;
-    sum = (Math.log10(parseInt(fa()))/*+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj()))*/)/1;
+    sum = (Math.log10(parseInt(fa()))+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj())))/10;
     document.getElementById("demo").innerHTML = sum;
 }
 function complex(){
     var p;
     p = 3;
-    //p = (Math.log10(parseInt(fa()))/*+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj()))*/)/1;
+    p = (Math.log10(parseInt(fa()))+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj())))/10;
     var w = 6.33;
     var h = 1;
     var d = -0.15;
     var c = Math.log(1/2*(1+Math.exp(1/d)));
     // var y = h*(1-Math.pow(((Math.exp(c)-Math.exp(1/w*1/d*x))/(Math.exp(c)-1)),2))
-    var z11 = Math.pow(Math.exp(c),2)*(w-(w-p))-2*Math.exp(c)*(w-(w-p))+1/2*w*d*(Math.exp(2*w/(w*d))-Math.exp(2*(w-p)/(w*d)));
-    var z22 = Math.pow(Math.exp(c),2)*(w-0)-2*Math.exp(c)*(w-0)+1/2*w*d*(Math.exp(2*w/(w*d))-Math.exp(2*0/(w*d)));
-    var z1 = h*((w-(w-p))-1/(Math.pow(Math.exp(c),2)-2*Math.exp(c)+1)*z11)
-    var z2 = h*((w-0)-1/(Math.pow(Math.exp(c),2)-2*Math.exp(c)+1)*z22)
+    var z1 = (h*(d*Math.exp(1/d)*w*(-4*Math.exp(c-(p/(d*w)))+4*Math.exp(c)+Math.exp((w-2*p)/(d*w))-Math.exp(1/d))+(2-4*Math.exp(c))*p))/(2*(Math.exp(c)-1)*(Math.exp(c)-1))
+    var z2 = -h*(d*w*(Math.exp(w/d/w)-Math.exp(0/d/w))*(Math.exp(w/d/w)+Math.exp(0/d/w)-4*Math.exp(c))+w*(4*Math.exp(c)-2)+0*(2-4*Math.exp(c)))/(2*(Math.exp(c)-1)*(Math.exp(c)-1))
     var z = 1-z1/z2;
     document.getElementById("obs").innerHTML = z;
 }
@@ -66,7 +64,7 @@ function fa() {
     return text;
 }
 </script>
-<!-- <script>
+<script>
 function fb() {
     var x, text;
     x = document.getElementById("b").value;
@@ -182,6 +180,6 @@ function fj() {
     text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
     return text;
 }
-</script> -->
+</script>
 </body>
 </html> 
