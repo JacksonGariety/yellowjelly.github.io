@@ -2,10 +2,12 @@
 <html>
 <body>
 <p>Enter the artist names of your ten favorite albums</p>
+<p>Enter the artist names of your ten favorite albums</p>
 <form id="frm1" action="/action_page.php">
   Artist from your first album: <input type="text" name="a"><br>
   Artist from your second album: <input type="text" name="b"><br><br>
   <input type="button" onclick="myFunction()" value="Submit">
+  Artist from your second album: <input type="text" name="b">
 </form>
 <script>
 var artists = [a,b]
@@ -24,7 +26,7 @@ for (var i = 0; i<artists.length; i++){
     sum *= xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
   }
 }
-return sum
+sum
 }
 </script>
 </body>
