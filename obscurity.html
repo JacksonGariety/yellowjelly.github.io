@@ -5,22 +5,25 @@
 <br>
 <br>
 Instructions: 
-<br>
+<br><br>
 1) Write the artist name in the left field, album name in the right field (up/down order doesn't matter).
-<br>
+<br><br>
 2) Only one album per artist. 
-<br>
+<br><br>
 3) Ignore various artists albums. 
-<br>
+<br><br>
 4) Use the most common/general name of an artist (for example, "Miles Davis" instead of "Miles Davis Quintet", "Frank Zappa" instead of "The Mothers of Invention"). 
 <br>
 If not sure, look up the related artist with the most listeners using the following link https://www.last.fm/search/albums?q=ALBUM+NAME+HERE
-<br>
+<br><br>
 5) For collaborations, use the name of artist with the most listeners (for example, "Mono" instead of "Mono &amp; World's End Girlfriend")
 <br>
 If not sure, look up the related artist with the most listeners using the following link https://www.last.fm/search/artists?q=ARTIST+NAME+HERE
-<br>
+<br><br>
 6) Use composer name when it comes to classical.
+<br>
+<br>
+Note: You don't actually need to type the album name, so feel free to leave the album field blank.
 <br>
 <br>
 01. <input id="a"><input id="trash">
@@ -43,12 +46,8 @@ If not sure, look up the related artist with the most listeners using the follow
 <br>
 10. <input id="j"><input id="trash">
 <br>
-<button type="button" onclick="rawf(); nonrawf();">Calculate!</button>
 <br>
-<br>
-Raw Obscurity Score: <b id="raw"></b>
-<br>
-Obscurity Score: <b id="nonraw"></b>
+<button type="button" onclick="rawf(); nonrawf();">Calculate!</button>&nbsp;Raw Obscurity Score: <b id="raw"></b>&nbsp;|| Obscurity Score: <b id="nonraw"></b>
 <script>
 function rawf() {
     var sum;
