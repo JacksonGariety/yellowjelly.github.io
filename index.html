@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-
 <h2>Obscurity Score</h2>
-
 <p>Artist - Album</p>
-
 <input id="a"><input id="trash">
 <br>
 <input id="b"><input id="trash">
@@ -26,27 +23,29 @@
 <br>
 <input id="j"><input id="trash">
 <br>
-<button type="button" onclick="myFunction()">Raw Score</button>
-<button type="button" onclick="complex()">Score</button>
-<p>Raw Score: </p><p id="demo"></p>
-<p>Score: </p><p id="obs"></p>
+<button type="button" onclick="myFunction(); complex();">Calculate!</button>
+<p>Raw Obscurity Score: </p><p id="demo"></p>
+<p>Obscurity Score: </p><p id="obs"></p>
+
 <script>
 function myFunction() {
     var sum;
     sum = (Math.log10(parseInt(fa()))+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj())))/10;
+    sum = (sum*100-(sum*100)%1)/100;
     document.getElementById("demo").innerHTML = sum;
 }
 function complex(){
     var p;
     p = (Math.log10(parseInt(fa()))+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj())))/10;
-    var w = 6.63;
-    var h = 1;
-    var d = -0.15;
+    var w = 6.63; //width
+    var h = 1; //height
+    var d = -0.15; //mode
     var c = Math.log(1/2*(1+Math.exp(1/d)));
     // var y = h*(1-Math.pow(((Math.exp(c)-Math.exp(1/w*1/d*x))/(Math.exp(c)-1)),2))
+    // WolframAlpha I love you
     var z1 = (h*(d*Math.exp(1/d)*w*(-4*Math.exp(c-(p/(d*w)))+4*Math.exp(c)+Math.exp((w-2*p)/(d*w))-Math.exp(1/d))+(2-4*Math.exp(c))*p))/(2*(Math.exp(c)-1)*(Math.exp(c)-1))
     var z2 = -h*(d*w*(Math.exp(w/d/w)-Math.exp(0/d/w))*(Math.exp(w/d/w)+Math.exp(0/d/w)-4*Math.exp(c))+w*(4*Math.exp(c)-2)+0*(2-4*Math.exp(c)))/(2*(Math.exp(c)-1)*(Math.exp(c)-1))
-    var z = 1-z1/z2;
+    var z = ""+100*(1-z1/z2)-(1000*(1-z1/z2)%1)/10+"%";
     document.getElementById("obs").innerHTML = z;
 }
 </script>
@@ -180,5 +179,6 @@ function fj() {
     return text;
 }
 </script>
+
 </body>
 </html> 
