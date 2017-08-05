@@ -1,33 +1,187 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>Enter the artist names of your ten favorite albums</p>
-<form id="frm1" action="/action_page.php">
-  Artist from your first album: <input type="text" name="a"><br>
-  Artist from your second album: <input type="text" name="b"><br><br>
-  <input type="button" onclick="myFunction()" value="Submit">
-</form>
-<p>
+
+<h2>Obscurity Score</h2>
+
+<p>Artist - Album</p>
+
+<input id="a"><!-- <input id="basura"> -->
+<br>
+<!-- <input id="b"><input id="basura">
+<br>
+<input id="c"><input id="basura">
+<br>
+<input id="d"><input id="basura">
+<br>
+<input id="e"><input id="basura">
+<br>
+<input id="f"><input id="basura">
+<br>
+<input id="g"><input id="basura">
+<br>
+<input id="h"><input id="basura">
+<br>
+<input id="i"><input id="basura">
+<br>
+<input id="j"><input id="basura">
+<br> -->
+<button type="button" onclick="myFunction()">Raw Score</button>
+<button type="button" onclick="complex()">Score</button>
+<p>Raw Score: </p><p id="demo"></p>
+<p>Score: </p><p id="obs"></p>
 <script>
-var artists = [a,b]
-var sum = 0
-function main(){
-for (var i = 0; i<artists.length; i++){
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist=" + artists[i] + "&autocorrect=1", false);
-  xhr.setRequestHeader('Content-Type', 'text/xml');
-  xhr.send();
-  xmlDocument = xhr.responseXML;
-  if (sum === 0){
-    sum += xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-  }
-  else {
-    sum *= xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-  }
+function myFunction() {
+    var sum;
+    sum = (Math.log10(parseInt(fa()))/*+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj()))*/)/1;
+    document.getElementById("demo").innerHTML = sum;
 }
-sum
+function complex(){
+    var p;
+    p = 3;
+    //p = (Math.log10(parseInt(fa()))/*+Math.log10(parseInt(fb()))+Math.log10(parseInt(fc()))+Math.log10(parseInt(fd()))+Math.log10(parseInt(fe()))+Math.log10(parseInt(ff()))+Math.log10(parseInt(fg()))+Math.log10(parseInt(fh()))+Math.log10(parseInt(fi()))+Math.log10(parseInt(fj()))*/)/1;
+    var w = 6.33;
+    var h = 1;
+    var d = -0.15;
+    var c = Math.log(1/2*(1+Math.exp(1/d)));
+    // var y = h*(1-Math.pow(((Math.exp(c)-Math.exp(1/w*1/d*x))/(Math.exp(c)-1)),2))
+    var z11 = Math.pow(Math.exp(c),2)*(w-(w-p))-2*Math.exp(c)*(w-(w-p))+1/2*w*d*(Math.exp(2*w/(w*d))-Math.exp(2*(w-p)/(w*d)));
+    var z22 = Math.pow(Math.exp(c),2)*(w-0)-2*Math.exp(c)*(w-0)+1/2*w*d*(Math.exp(2*w/(w*d))-Math.exp(2*0/(w*d)));
+    var z1 = h*((w-(w-p))-1/(Math.pow(Math.exp(c),2)-2*Math.exp(c)+1)*z11)
+    var z2 = h*((w-0)-1/(Math.pow(Math.exp(c),2)-2*Math.exp(c)+1)*z22)
+    var z = 1-z1/z2;
+    document.getElementById("obs").innerHTML = z;
 }
 </script>
-</p>
+<script>
+function fa() {
+    var x, text;
+    x = document.getElementById("a").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<!-- <script>
+function fb() {
+    var x, text;
+    x = document.getElementById("b").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function fc() {
+    var x, text;
+    x = document.getElementById("c").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function fd() {
+    var x, text;
+    x = document.getElementById("d").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function fe() {
+    var x, text;
+    x = document.getElementById("e").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function ff() {
+    var x, text;
+    x = document.getElementById("f").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function fg() {
+    var x, text;
+    x = document.getElementById("g").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function fh() {
+    var x, text;
+    x = document.getElementById("h").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function fi() {
+    var x, text;
+    x = document.getElementById("i").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script>
+<script>
+function fj() {
+    var x, text;
+    x = document.getElementById("j").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=c2cc54ab2bedd01c955cbf20cea46416&artist="+x+"&autocorrect=1",false);
+    xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.send();
+    xmlDocument = xhr.responseXML;
+    text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
+    return text;
+}
+</script> -->
 </body>
-</html>
+</html> 
