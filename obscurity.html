@@ -15,11 +15,11 @@
     <br>
     If not sure, look up the related artist with the most listeners using the following link https://www.last.fm/search/albums?q=ALBUM+NAME+HERE
     <br><br>
-    5) For collaborations, use the name of artist with the most listeners (for example, "Mono" instead of "Mono &amp; World's End Girlfriend")
+    5) For collaborations, use the name of the artist with the most listeners (for example, "Mono" instead of "Mono &amp; World's End Girlfriend")
     <br>
     If not sure, look up the related artist with the most listeners using the following link https://www.last.fm/search/artists?q=ARTIST+NAME+HERE
     <br><br>
-    6) Use composer name when it comes to classical.
+    6) Use the composer name when it comes to classical.
     <br><br>
     Note: You don't actually need to type the album name, so feel free to leave the album field blank.
     <br><br>
@@ -83,12 +83,11 @@
             xhr.setRequestHeader('Content-Type', 'text/xml');
             xhr.send();
             xmlDocument = xhr.responseXML;
-            text = xmlDocument.getElementsByTagName("listeners")[0].childNodes[0].nodeValue;
-            if(parseInt(text)>0){
-                prod = prod*text;
+            if (xmlDocument.getElementsByTagName("lfm")[0].getAttribute("status") !== "failed"){
+                prod = prod*1;
             }
             else{
-                prod = prod*1;
+                prod = prod*text;
             }
         }
         prod = Math.log10(prod)/10;
