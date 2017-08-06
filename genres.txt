@@ -38,7 +38,6 @@ Audio
 						Plunderphonics
 			Noise
 				Harsh Noise
-			Indeterminacy
 	Non Music
 		Sound and Effects
-		Radio Plays (Literature? Not Music)
+		Radio Plays
