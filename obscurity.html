@@ -83,7 +83,7 @@
             xhr.setRequestHeader('Content-Type', 'text/xml');
             xhr.send();
             xmlDocument = xhr.responseXML;
-            if (xmlDocument.getElementsByTagName("lfm")[0].getAttribute("status") !== "failed"){
+            if (xmlDocument.getElementsByTagName("lfm")[0].getAttribute("status") == "failed"){
                 prod = prod*1;
             }
             else{
