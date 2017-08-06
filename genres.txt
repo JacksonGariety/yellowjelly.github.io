@@ -1,0 +1,44 @@
+Audio
+	Music
+		Silence
+		Non Genre Music
+			Lullabies?
+			Jingles?
+		Traditional Folk & Classical
+			Pre-Columbine
+				Aztec Music
+			American
+				Jazz
+					Dixieland
+			European
+				European Classical
+					Baroque
+		Popular
+			Global
+				Rock
+					Rock & Roll
+					Progressive Rock
+				EDM
+					House
+					Techno
+					Breakcore
+			Regional
+				Afrobeat
+				Bossa Nova
+				Salsa
+					Salsa Dura
+		Experimental
+			Ambient
+			Electronic
+			Free Improvisation
+			Minimalism
+			Audio Manipulation
+				Field Recordings
+					Sound Collage
+						Plunderphonics
+			Noise
+				Harsh Noise
+			Indeterminacy
+	Non Music
+		Sound and Effects
+		Radio Plays (Literature? Not Music)
