@@ -1,37 +1,40 @@
 Audio
 	Music
-		Silence
-		Non Genre Music
+		Non Genre Non Experimental Music
 			Lullabies?
 			Jingles?
-		Traditional Folk & Classical
-			Pre-Columbine
-				Aztec Music
-			American
-				Jazz
-					Dixieland
-			European
-				European Classical
-					Baroque
-		Popular
-			Global
-				Rock
-					Rock & Roll
-					Progressive Rock
-				EDM
-					House
-					Techno
-					Breakcore
-			Regional
-				Afrobeat
-				Bossa Nova
-				Salsa
-					Salsa Dura
+		Genres Music
+			Traditional Folk & Classical
+				Pre-Columbine
+					Aztec Music
+				American
+					Jazz
+						Dixieland
+				European
+					European Classical
+						Baroque
+			Popular
+				Global
+					Rock
+						Rock & Roll
+						Progressive Rock
+					EDM
+						House
+						Techno
+						Breakcore
+				Regional
+					Afrobeat
+					Bossa Nova
+					Salsa
+						Salsa Dura
 		Experimental
+			Silence
 			Ambient
 			Electronic
 			Free Improvisation
 			Minimalism
+				Drone
+				Totalism
 			Audio Manipulation
 				Field Recordings
 					Sound Collage
